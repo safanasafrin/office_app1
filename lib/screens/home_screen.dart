@@ -71,19 +71,16 @@ class _HomeScreenState extends State<HomeScreen> {
                 width: 350,
                 padding: EdgeInsets.all(25),
                 decoration: BoxDecoration(
-                    color: boxColor,
+                    color: Colors.white,
                     borderRadius: BorderRadius.circular(15),
-                    boxShadow: const [
-                    BoxShadow(
-                        color: Colors.white,
-                        blurRadius: 20.0,
-                        offset: Offset(0, 10))
-                    ]),
+
+                  ),
                 child: Form(
                   key: _formKey,
                     child:Column(
                       children: <Widget>[
                         buildEmailField(),
+                        buildPasswordField(),
                       ],
                     ),
                   ),
@@ -112,19 +109,15 @@ class _HomeScreenState extends State<HomeScreen> {
                 width: 350,
                 padding: EdgeInsets.all(25),
                 decoration: BoxDecoration(
-                    color: boxColor,
+                    color: Colors.white,
                     borderRadius: BorderRadius.circular(15),
-                    boxShadow: const [
-                      BoxShadow(
-                          color: Colors.white,
-                          blurRadius: 20.0,
-                          offset: Offset(0, 10))
-                    ]),
+
+                ),
                 child: Form(
                   key: _formKey,
                   child:Column(
                     children: <Widget>[
-                      buildPasswordField(),
+
                     ],
                   ),
                 ),
