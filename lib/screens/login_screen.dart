@@ -5,20 +5,24 @@ import 'package:office_app1/screens/mainScreen.dart';
 
 late bool _passwordVisible;
 
-class HomeScreen extends StatefulWidget {
-   static String routeName='HomeScreen';
+class LoginScreen extends StatefulWidget {
+   static String routeName='LoginScreen';
    static var _emailController = TextEditingController();
 
 
-  const HomeScreen({Key? key}) : super(key: key);
+  const LoginScreen({Key? key}) : super(key: key);
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _LoginScreenState extends State<LoginScreen> {
 
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  static GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  bool isLoading = false;
+  bool isSwitched = true;
+  var textValue = 'Office';
 
 
   @override
@@ -26,6 +30,22 @@ class _HomeScreenState extends State<HomeScreen> {
     // TODO: implement initState
     super.initState();
     _passwordVisible = true;
+  }
+
+  void toggleSwitch(bool value) {
+    if (isSwitched == true) {
+      setState(() {
+        isSwitched = false;
+        textValue = 'Home';
+      });
+      print('Home');
+    } else {
+      setState(() {
+        isSwitched = true;
+        textValue = 'Office';
+      });
+      print('Office');
+    }
   }
 
   @override
@@ -53,12 +73,25 @@ class _HomeScreenState extends State<HomeScreen> {
             ],
           ),
           Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+          //  crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               SizedBox(
-                width: 30,
+                width:30,
               ),
               Text('Login',
-              style: TextStyle(color:Colors.black,fontSize: 20),)
+              style: TextStyle(color:Colors.black,fontSize: 20),),
+              SizedBox(
+                width:180,
+              ),
+              Text('Office'),
+              Switch(
+                value: isSwitched,
+                onChanged: toggleSwitch,
+                activeColor: Colors.white,
+                activeTrackColor: Colors.blue,
+                inactiveTrackColor: Colors.redAccent,
+              ),
             ],
           ),
           Column(
@@ -80,6 +113,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     child:Column(
                       children: <Widget>[
                         buildEmailField(),
+
                         buildPasswordField(),
                       ],
                     ),
@@ -151,17 +185,17 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Text('Login',
               style: TextStyle(fontWeight: FontWeight.w600,
                 fontSize: 18,
-                color:Colors.black,
+                color:Colors.white,
               ),
             ),
 
           ),
           Row(
             children:[
-              Image.asset('assets/image/bLeft.png',height:250.0,width: 222.0,),
+              Image.asset('assets/image/bLeft.png',height:250.0,width: 220.0,),
               Row(
                 children:[
-                  Image.asset('assets/image/bRight.png',height:150.0,width: 150.0,),
+                  Image.asset('assets/image/bRight.png',height:250.0,width: 170.0,),
                 ],
               ),
             ],
@@ -176,7 +210,7 @@ class _HomeScreenState extends State<HomeScreen> {
 }
 TextFormField buildEmailField() {
   return TextFormField(
-    controller: HomeScreen._emailController,
+    controller: LoginScreen._emailController,
     textAlign: TextAlign.start,
     keyboardType: TextInputType.emailAddress,
     textDirection: TextDirection.ltr,
