@@ -16,35 +16,25 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-
-      backgroundColor:bgColor ,
-        body:Column(
-          children: [
-            ElevatedButton(onPressed: (){_buildChild();}, child: Text('grant access')),
-            SizedBox(height: 30,),
-            ElevatedButton(onPressed: (){_buildExit();}, child: Text('logout')),
-            SizedBox(height: 30,),
-            ElevatedButton(onPressed: (){_buildAccess();}, child: Text('deny access')),
-            SizedBox(height: 30,),
-            ElevatedButton(onPressed:(){_buildRemote();}, child: Text('Remote area')),
-            SizedBox(height: 30,),
-            ElevatedButton(onPressed:(){_buildExitApp();}, child: Text('veliya po da')),
-          ],
-        ),
+    return Dialog(
+               shape:RoundedRectangleBorder(
+                 borderRadius: BorderRadius.circular(30)
+               ),
+               elevation:0,
+               backgroundColor: Colors.transparent,
+               child:_buildChild(),
 
     );
   }
 
   //ACCESS GRANTED
-  _buildChild() => Dialog(
-    child: Container(
+  _buildChild() => Container(
         height: 380,
         width: 300,
         decoration: BoxDecoration(
           color: Colors.white,
           shape: BoxShape.rectangle,
-          borderRadius: BorderRadius.all(Radius.circular(30))
+          borderRadius: BorderRadius.all(Radius.circular(20))
         ),
          child: Column(
            children: [
@@ -65,7 +55,6 @@ class _MainScreenState extends State<MainScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   MaterialButton(onPressed:(){
-
                   },
                       color: btnColor,
                       shape: RoundedRectangleBorder(
@@ -80,7 +69,7 @@ class _MainScreenState extends State<MainScreen> {
                 ),
            ],
          ),
-      ),
+
   );
 }
 
@@ -95,7 +84,7 @@ class _MainScreenState extends State<MainScreen> {
     ),
     child: Column(
       children: [
-        Image.asset('assets/image/accessGranted.png',height:150,width:170),
+        Image.asset('assets/image/exit.png',height:150,width:170),
         SizedBox(
           height: 50,
         ),
@@ -104,7 +93,7 @@ class _MainScreenState extends State<MainScreen> {
           height:30 ,
         ),
 
-        Text('We look forward to see you again',style: TextStyle(fontSize:18),),
+        Text('you have successfully logged out',style: TextStyle(fontSize:18),),
         SizedBox(
           height:25,
         ),
@@ -122,7 +111,7 @@ class _MainScreenState extends State<MainScreen> {
                   borderRadius: BorderRadius.circular(25),
 
                 ),
-                child:Text('Exit',style: TextStyle(fontSize:18),))
+                child:Text('OK',style: TextStyle(fontSize:18),))
           ],
         ),
       ],
@@ -140,7 +129,7 @@ _buildAccess() => Container(
   ),
   child: Column(
     children: [
-      Image.asset('assets/image/accessGranted.png',height:150,width:170),
+      Image.asset('assets/image/denied.png',height:150,width:170),
       SizedBox(
         height: 50,
       ),
@@ -168,7 +157,7 @@ _buildAccess() => Container(
                 borderRadius: BorderRadius.circular(25),
 
               ),
-              child:Text('Exit',style: TextStyle(fontSize:18),))
+              child:Text('Go Back',style: TextStyle(fontSize:18),))
         ],
       ),
     ],
@@ -186,7 +175,7 @@ _buildRemote() => Container(
   ),
   child: Column(
     children: [
-      Image.asset('assets/image/accessGranted.png',height:150,width:170),
+      Image.asset('assets/image/remote.png',height:150,width:170),
       SizedBox(
         height: 50,
       ),
@@ -195,7 +184,7 @@ _buildRemote() => Container(
         height:30 ,
       ),
 
-      Text('We look forward to see you again',style: TextStyle(fontSize:18),),
+      Text('Now you can work from anywhere',style: TextStyle(fontSize:18),),
       SizedBox(
         height:25,
       ),
@@ -213,7 +202,7 @@ _buildRemote() => Container(
                 borderRadius: BorderRadius.circular(25),
 
               ),
-              child:Text('Exit',style: TextStyle(fontSize:18),))
+              child:Text('ok',style: TextStyle(fontSize:18),))
         ],
       ),
     ],
@@ -231,7 +220,7 @@ _buildExitApp() => Container(
   ),
   child: Column(
     children: [
-      Image.asset('assets/image/accessGranted.png',height:150,width:170),
+      Image.asset('assets/image/exit.png',height:150,width:170),
       SizedBox(
         height: 50,
       ),
@@ -258,7 +247,7 @@ _buildExitApp() => Container(
                 borderRadius: BorderRadius.circular(25),
 
               ),
-              child:Text('Exit',style: TextStyle(fontSize:18),))
+              child:Text('ok',style: TextStyle(fontSize:18),))
         ],
       ),
     ],
